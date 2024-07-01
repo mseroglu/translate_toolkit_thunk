@@ -32,7 +32,7 @@ const App = () => {
     setSourceLang(targetLang)
     setTargetLang(sourceLang)
     setText(translateState.answer)
-    dispatch(setAnswer(text))    
+    dispatch(setAnswer(text))
   }
 
 
@@ -62,23 +62,27 @@ const App = () => {
         </div>
 
         <div className="flex gap-3 md:gap-8 max-md:flex-col">
-          <textarea
-            onChange={(e) => setText(e.target.value)}
-            className="w-full min-h-[200px] max-h-[400px] p-3 text-xl text-black rounded "
-            value={text}>
-          </textarea>
+          <div className="w-full p-0">
+            <textarea
+              onChange={(e) => setText(e.target.value)}
+              className="w-full min-h-[200px] max-h-[400px] p-3 text-xl text-black rounded "
+              value={text}>
+            </textarea>
+          </div>
           <div className="relative w-full p-0">
             <textarea
               className="w-full min-h-[200px] max-h-[400px] p-3 text-xl text-black rounded m-0"
               value={translateState.answer}
               readOnly >
             </textarea>
-            {translateState.isLoading && (              
+            {translateState.isLoading && (
+              <p className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
                 <div className="loader">
                   <span className="bar"></span>
                   <span className="bar"></span>
                   <span className="bar"></span>
-                </div>            
+                </div>
+              </p>
             )}
           </div>
 
